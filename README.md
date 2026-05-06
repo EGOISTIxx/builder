@@ -18,7 +18,7 @@
 
 ```bash
 # Клонирование репозитория
-git clone 
+git clone https://github.com/EGOISTIxx/builder.git
 cd builder
 
 # Установка зависимостей
