@@ -1,15 +1,36 @@
 export type CameraSlice = {
-  zoom: number
-  offset: { x: number; y: number }
-
-  setZoom: (z: number) => void
-  setOffset: (o: { x: number; y: number }) => void
-}
+  zoom: number;
+  camera: {
+    x: number;
+    y: number;
+  };
+  setZoom: (zoom: number) => void;
+  moveCamera: (dx: number, dy: number) => void;
+  setCamera: (x: number, y: number) => void;
+};
 
 export const createCameraSlice = (set): CameraSlice => ({
   zoom: 1,
-  offset: { x: 0, y: 0 },
-
-  setZoom: (zoom) => set({ zoom }),
-  setOffset: (offset) => set({ offset }),
-})
+  camera: {
+    x: 0,
+    y: 0,
+  },
+  setZoom: (zoom) =>
+    set({
+      zoom,
+    }),
+  moveCamera: (dx, dy) =>
+    set((state) => ({
+      camera: {
+        x: state.camera.x + dx,
+        y: state.camera.y + dy,
+      },
+    })),
+  setCamera: (x, y) =>
+    set({
+      camera: {
+        x,
+        y,
+      },
+    }),
+});
