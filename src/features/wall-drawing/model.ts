@@ -11,7 +11,7 @@ type Wall = {
 };
 
 // собираем все вершины стен (для snap)
-function getWallVertices(walls: Wall[]): Point[] {
+const getWallVertices = (walls: Wall[]): Point[] => {
   const points: Point[] = [];
 
   for (const w of walls) {
@@ -22,11 +22,11 @@ function getWallVertices(walls: Wall[]): Point[] {
   return points;
 }
 
-export function startWallDrawing(store: Store, point: Point) {
+export const startWallDrawing = (store: Store, point: Point) => {
   store.startDrawing(point);
 }
 
-export function finishWallDrawing(store: Store, point: Point) {
+export const finishWallDrawing = (store: Store, point: Point) => {
   const start = store.tempStart;
   if (!start) return;
 
@@ -50,6 +50,6 @@ export function finishWallDrawing(store: Store, point: Point) {
   store.cancelDrawing();
 }
 
-export function cancelWallDrawing(store: Store) {
+export const cancelWallDrawing = (store: Store) => {
   store.cancelDrawing();
 }

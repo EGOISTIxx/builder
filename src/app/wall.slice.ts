@@ -8,18 +8,16 @@ export type Wall = {
 
 export type WallSlice = {
   walls: Wall[];
-
   addWall: (wall: Wall) => void;
   updateWall: (id: string, data: Partial<Wall>) => void;
 };
 
 export const createWallSlice = (set): WallSlice => ({
   walls: [],
-
   addWall: (wall) => set((state) => ({ walls: [...state.walls, wall] })),
 
   updateWall: (id, data) =>
     set((state) => ({
-      walls: state.walls.map((w) => (w.id === id ? { ...w, ...data } : w)),
+      walls: state.walls.map((w: Wall) => (w.id === id ? { ...w, ...data } : w)),
     })),
 });

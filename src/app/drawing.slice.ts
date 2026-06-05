@@ -3,7 +3,6 @@ type Point = { x: number; y: number };
 export type DrawingSlice = {
   isDrawing: boolean;
   tempStart: Point | null;
-
   startDrawing: (p: Point) => void;
   finishDrawing: (p: Point) => void;
   cancelDrawing: () => void;
@@ -12,13 +11,11 @@ export type DrawingSlice = {
 export const createDrawingSlice = (set, get): DrawingSlice => ({
   isDrawing: false,
   tempStart: null,
-
   startDrawing: (p) =>
     set({
       isDrawing: true,
       tempStart: p,
     }),
-
   finishDrawing: (p) => {
     const start = get().tempStart;
     if (!start) return;
@@ -36,7 +33,6 @@ export const createDrawingSlice = (set, get): DrawingSlice => ({
       tempStart: null,
     });
   },
-
   cancelDrawing: () =>
     set({
       isDrawing: false,
